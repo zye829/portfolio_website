@@ -1,0 +1,387 @@
+*{
+    margin:0;
+    padding:0; 
+    box-sizing:border-box;
+    font-family:'Rubik', sans-serif;
+    line-height: 1.5;
+}
+
+body{
+    background:#dbd5c5;
+    color: #564f5c;
+}
+
+/* NAV BAR */
+.header {
+    position:fixed;
+    left:0;
+    width:100%;
+    height: 7%;
+    padding:30px,10%;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    font-size:30px;
+    z-index:100;
+
+}
+
+
+.logo {
+    font-family:'blanka', sans-serif;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    pointer-events:none;
+    padding:0 10%;
+
+}
+
+.navbar a {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    margin-left:20px;
+    margin-right: 20px;
+    padding: 0 10px;
+    position: relative;
+}
+
+.navbar a.active{
+    color:#564f5c;
+} 
+
+.navbar a:after{
+    content:'';
+    height:2px;
+    width:0;
+    background-color: #564f5c;
+    position:absolute;  
+    left:0;
+    bottom:-10px;
+    transition: 0.4s;
+    pointer-events:none;
+} 
+
+.navbar a:hover:after{
+    width:100%;
+}
+
+/* WELCOME PAGE  */
+.welcome{
+    width:100%;
+    height:100vh;
+    margin-bottom:-200px;
+    display:flex;
+    align-items:center;
+    padding:0 20%;
+    
+}
+
+.welcome-intro h1, .self-des h1{
+    font-size:56px;
+    font-weight:bold;
+}
+
+.welcome p{
+    font-size:18px;
+}
+
+.dynamic-text{
+    height:40px;
+    overflow: hidden;
+}
+
+.dynamic-text li{
+    list-style: none;
+    font-size: 30px;
+    position: relative;
+    justify-content: space-between;
+    top:0;
+    animation: slide 14.0s steps(4) infinite;
+}
+
+@keyframes slide{
+    100%{
+        top: -190px;
+    }
+}
+
+.dynamic-text li span{
+    position: relative;
+}
+
+.dynamic-text li span::after{
+    content: " ";
+    position:absolute;
+    height: 115%;
+    width: 100%;
+    left:0;
+    background: #dbd5c5;
+    border-left:2px solid #fff;
+    animation: typing 3.5s steps(30) infinite;
+}
+
+@keyframes typing{
+    100%{
+        left:100%;
+        margin: 0 -35px 0 35px;
+    }
+}
+
+.social-icons a{
+    display: inline-block; 
+    margin-right: 30px;
+   align-items:center;
+   justify-content: space-between;
+   padding-top: 10px;
+   font-size:30px;
+   color:#fff;
+   text-decoration: none;
+
+}
+
+
+.social-icons a:hover {
+    transform:scale(1.3);
+    color:#847f88;
+}
+
+
+.projects{
+    color: #fff;
+    width:100%;
+    height:auto;
+    padding:0 20%;
+}
+
+.projects h2{
+    font-size: 30px;
+}
+
+.line{
+    border-top: 3px solid#fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.project-tiles{
+    background: #fff;
+    height:50%;
+    display: block;
+    border-radius: 5px;
+    justify-content: center;
+    margin-bottom: 30px;
+    border: 5px solid #edede1;
+}
+
+.project-tiles a{
+    text-decoration: none;
+    color: #847f88;
+
+}
+
+.project-tiles img{
+    height: 80%;
+    width:100%;
+    border-radius: 5px 5px 0px 0px;
+    object-fit: cover;   
+}
+
+.project-tiles span{
+    background-color: #dbd5c5e6;
+    border-radius: 6px;
+}
+
+.project-tiles h3, .project-tiles p{
+    margin-left: 3px;
+}
+.project-tiles:hover {
+    transform:scale(1.02);
+
+}
+
+/* ABOUT PAGE*/
+.about-intro{
+    width:100%;
+    height:100vh;
+    margin-bottom:-100px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    padding:0 20%;
+}
+
+
+.about-intro img{
+    height: 50%;
+    width:50%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.self-des{
+    width: 50%;
+    height: auto;
+    margin-right: 25px;
+    
+}
+
+/* ALL PROJECT PAGE */
+.project-title-img{
+    max-width:100%;
+    height: 50%;
+    border-radius: 5px;
+}
+
+.project-pag-img{
+    max-width:100%;
+    height: 50%;
+    border-radius: 10px;
+    border: 15px solid#edede1;
+}
+
+.intro{
+    width:100%;
+    height: auto;
+    display:block;
+    position: relative;
+    align-items:center;
+    padding: 100px 25% 0 25%;
+}
+
+.intro h1{
+    color:#fff;
+    font-size:40px;
+    font-weight:bold;
+    padding-bottom: 5px;
+}
+
+.intro h3{
+    font-size:30px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.intro h4{
+    font-size:18px;
+}
+
+
+.summary-titles{
+    font-weight: bold;
+    color: rgb(121, 114, 105);
+}
+
+.summary-des{
+    font-weight: normal;
+}
+
+.summary{
+    display:flex;
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+    width: 100%;
+    height:20%;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.right-sum{
+    width:50%;
+    flex-wrap: wrap;
+}
+
+.project-des{
+    margin-bottom: 25px;
+}
+
+.bolded-word{
+    font-weight: bold;
+}
+
+/* MIRA PAGE */
+.MIRA-soln{
+    margin-bottom: 15px;
+}
+
+/* SUPPORTIVE TEENS */
+
+.ST-results{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 13px solid antiquewhite;
+    background-color: antiquewhite;
+    
+}
+
+.ST-results img{
+  width: 50%;
+  max-width: 350px;
+  height: 250px;
+  
+}
+
+.st-graphics-ex{
+    margin: 10px 0 10px 0;
+    position: relative;
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    border: 10px solid antiquewhite;
+    background-color: antiquewhite;
+    text-align: center;
+    width:100%; 
+    height:500px;
+    
+}
+
+.st-graphics-ex a{
+    color:#564f5c;
+    text-decoration: none;
+    border: none;
+}
+
+.st-graphics-ex iframe, .st-graphics-ex img{
+    width:100%; 
+    height:95%;
+}
+
+/* FOOTER */
+.footer{
+    margin-top: 100px;
+    margin-bottom: 20px;
+    display: block;
+    width:100%;
+    text-align: center;
+    justify-content: space-between;
+    align-items:center;
+    padding:0 20%;
+}
+
+.footer h1{
+    color: #fff;
+    size:40px;
+    font-family:'blanka', sans-serif;
+}
+
+.footer p{
+    color:#fff
+}
+
+.footer-line{
+    border-top: 1px solid#fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.footer-icon{
+    margin-right:-25px;
+}
