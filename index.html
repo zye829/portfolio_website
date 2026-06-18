@@ -1,125 +1,715 @@
 <!DOCTYPE html>
-<html lang="'en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="https://fonts.cdnfonts.com/css/blanka" rel="stylesheet">
-        <title>
-            Zilin Ye|Home
-        </title>
-        <link rel="icon" href="favicon.ico" type="image/png">
-        <link rel="stylesheet" href="styles.css"/>
-    </head>
-    <body>
-        <!-- Icon library -->
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio homepage for Zilin Ye, Biomedical Engineering student at the University of Waterloo." />
+    <link href="https://fonts.cdnfonts.com/css/blanka" rel="stylesheet">
+    <title>Zilin Ye | Home</title>
+    <link rel="icon" href="favicon.ico" type="image/png">
+    <link rel="stylesheet" href="styles.css" />
 
-        <!-- Header -->
-        <header class="header">
-            <a href="#" class="logo">ZY</a>
+    <style>
+        :root {
+            --bg: #f8f5ef;
+            --bg-soft: #fffaf3;
+            --text: #171412;
+            --muted: #6d625a;
+            --accent: #b86b58;
+            --accent-dark: #7d3f34;
+            --accent-light: #f1d7ce;
+            --sage: #c4caba;
+            --card: rgba(255, 255, 255, 0.78);
+            --border: rgba(23, 20, 18, 0.11);
+            --shadow: 0 24px 70px rgba(63, 45, 36, 0.12);
+        }
 
-            <nav class="navbar">
-                <a href="index.html" class="active navlink">Home</a>
-                <a href="about.html" class="navlink">About</a>
-                <a href="Resume_2025.pdf" class="navlink" target="_blank">Resume</a>
-            </nav>
-        </header>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, rgba(184, 107, 88, 0.23), transparent 34rem),
+                radial-gradient(circle at 90% 10%, rgba(196, 202, 186, 0.55), transparent 30rem),
+                linear-gradient(135deg, var(--bg), #f4eee6 55%, #efe6dc);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            width: min(1120px, calc(100% - 32px));
+            margin: 18px auto 0;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255, 250, 243, 0.78);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 12px 35px rgba(48, 35, 29, 0.08);
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--text);
+            color: var(--bg-soft);
+            font-family: "Blanka", Inter, sans-serif;
+            letter-spacing: 1px;
+            font-size: 1.05rem;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navlink {
+            padding: 10px 16px;
+            color: var(--muted);
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .navlink:hover,
+        .navlink.active {
+            color: var(--text);
+            background: rgba(184, 107, 88, 0.13);
+        }
+
+        main {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .welcome {
+            min-height: calc(100vh - 96px);
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            align-items: center;
+            gap: 56px;
+            padding: 84px 0 64px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 8px 14px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.5);
+            color: var(--accent-dark);
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 7px rgba(184, 107, 88, 0.14);
+        }
+
+        .welcome-intro h1 {
+            max-width: 780px;
+            font-size: clamp(3.2rem, 9vw, 7.8rem);
+            line-height: 0.92;
+            letter-spacing: -0.07em;
+        }
+
+        .welcome-intro h1 span {
+            color: var(--accent-dark);
+        }
+
+        .dynamic-text {
+            height: 42px;
+            margin: 24px 0 18px;
+            overflow: hidden;
+            list-style: none;
+        }
+
+        .dynamic-text li {
+            height: 42px;
+            color: var(--accent-dark);
+            font-size: clamp(1.18rem, 2.2vw, 1.7rem);
+            font-weight: 800;
+            animation: slideWords 12s steps(4) infinite;
+        }
+
+        .dynamic-text span {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dynamic-text span::after {
+            content: "";
+            position: absolute;
+            right: -7px;
+            top: 7px;
+            width: 3px;
+            height: 70%;
+            background: var(--accent);
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes slideWords {
+            100% { transform: translateY(-168px); }
+        }
+
+        @keyframes blink {
+            0%, 45% { opacity: 1; }
+            46%, 100% { opacity: 0; }
+        }
+
+        .intro-copy {
+            max-width: 620px;
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 32px 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 0 20px;
+            border-radius: 999px;
+            font-weight: 800;
+            transition: 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--text);
+            color: #fffaf3;
+            box-shadow: 0 14px 30px rgba(23, 20, 18, 0.17);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: var(--accent-dark);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.5);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            border-color: rgba(125, 63, 52, 0.4);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.62);
+            color: var(--text);
+            font-size: 1.35rem;
+            transition: 0.25s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-4px) rotate(-3deg);
+            color: var(--accent-dark);
+            border-color: rgba(184, 107, 88, 0.45);
+            box-shadow: 0 12px 26px rgba(63, 45, 36, 0.12);
+        }
+
+        .hero-card {
+            position: relative;
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 34px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.75), rgba(255,250,243,0.42));
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: 18px 18px auto auto;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(184, 107, 88, 0.18);
+            filter: blur(4px);
+        }
+
+        .profile-orb {
+            position: relative;
+            min-height: 360px;
+            display: grid;
+            align-content: end;
+            padding: 28px;
+            border-radius: 26px;
+            background:
+                linear-gradient(rgba(23, 20, 18, 0.08), rgba(23, 20, 18, 0.34)),
+                url("img/MIRA.jpg") center/cover;
+            overflow: hidden;
+        }
+
+        .profile-orb h2 {
+            position: relative;
+            color: #fffaf3;
+            font-size: 2.4rem;
+            line-height: 1;
+            letter-spacing: -0.05em;
+        }
+
+        .profile-orb p {
+            position: relative;
+            max-width: 260px;
+            margin-top: 12px;
+            color: rgba(255, 250, 243, 0.86);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .stat {
+            padding: 16px 10px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.62);
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--accent-dark);
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .stat span {
+            display: block;
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            letter-spacing: -0.06em;
+        }
+
+        .section-heading p {
+            max-width: 420px;
+            color: var(--muted);
+        }
+
+        .projects {
+            padding: 30px 0 88px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            position: relative;
+            min-height: 410px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            background: var(--card);
+            box-shadow: 0 16px 40px rgba(63, 45, 36, 0.08);
+            transition: 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 26px 70px rgba(63, 45, 36, 0.15);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            filter: saturate(0.96) contrast(1.02);
+            transition: 0.4s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .project-card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 22px;
+        }
+
+        .tag {
+            width: fit-content;
+            margin-bottom: 14px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            line-height: 1.18;
+            letter-spacing: -0.03em;
+        }
+
+        .project-card p {
+            margin-top: 12px;
+            color: var(--muted);
+        }
+
+        .card-link {
+            margin-top: auto;
+            padding-top: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-dark);
+            font-weight: 900;
+        }
+
+        .activities {
+            padding: 0 0 96px;
+        }
+
+        .activity-card {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 26px;
+            align-items: center;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            background: rgba(255, 255, 255, 0.62);
+            box-shadow: 0 16px 40px rgba(63, 45, 36, 0.08);
+            transition: 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .activity-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 22px;
+        }
+
+        .footer {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto 24px;
+            padding: 44px 20px;
+            border: 1px solid var(--border);
+            border-radius: 34px;
+            background: rgba(23, 20, 18, 0.92);
+            color: #fffaf3;
+            text-align: center;
+        }
+
+        .footer h1 {
+            margin-bottom: 18px;
+            font-family: "Blanka", Inter, sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.08em;
+        }
+
+        .footer .social-icons {
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .footer .social-icons a {
+            border-color: rgba(255, 250, 243, 0.16);
+            background: rgba(255, 250, 243, 0.08);
+            color: #fffaf3;
+        }
+
+        .footer p {
+            color: rgba(255, 250, 243, 0.72);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .welcome {
+                grid-template-columns: 1fr;
+                padding-top: 64px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .activity-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                align-items: stretch;
+                border-radius: 28px;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .navbar {
+                justify-content: space-between;
+            }
+
+            .navlink {
+                padding: 9px 12px;
+                font-size: 0.88rem;
+            }
+
+            .welcome-intro h1 {
+                font-size: clamp(3rem, 18vw, 5rem);
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .project-grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-orb {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Icon library -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="logo" aria-label="Zilin Ye homepage">ZY</a>
+
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="index.html" class="active navlink">Home</a>
+            <a href="about.html" class="navlink">About</a>
+            <a href="Resume_2025.pdf" class="navlink" target="_blank" rel="noopener noreferrer">Resume</a>
+        </nav>
+    </header>
+
+    <main>
         <!-- Introduction section -->
-        <section class="welcome">
+        <section class="welcome" id="home">
             <div class="welcome-intro">
-                <h1>Hi I'm Zilin Ye</h1>
-                <!-- customize for typing effect -->
-                <ul class="dynamic-text">
+                <p class="eyebrow">Biomedical Engineering · University of Waterloo</p>
+                <h1>Hi, I’m <span>Zilin Ye</span>.</h1>
+
+                <ul class="dynamic-text" aria-label="Highlights">
                     <li><span>Biomedical Engineering Student</span></li>
+                    <li><span>Technology + Healthcare Builder</span></li>
                     <li><span>Team Player and Critical Thinker</span></li>
-                    <li><span>Innovative and Open-Minded</span></li>
-                    <li><span>Detail Oriented</span></li>
+                    <li><span>Detail-Oriented Problem Solver</span></li>
                 </ul>
-                <p> I'm currently studying at the University of Waterloo in the Biomedical Engineering program, aspiring to contribute to the empowerment of the medical industry.</p>
-                <div class="social-icons">
-                    <a href=mailto:“zye@uwaterloo.ca” >
+
+                <p class="intro-copy">
+                    I’m currently studying Biomedical Engineering at the University of Waterloo, with an interest in building thoughtful technology that supports healthcare, research, and accessible design.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#projects">View projects <ion-icon name="arrow-down-outline"></ion-icon></a>
+                    <a class="btn btn-secondary" href="Resume_2025.pdf" target="_blank" rel="noopener noreferrer">Open resume</a>
+                </div>
+
+                <div class="social-icons" aria-label="Social links">
+                    <a href="mailto:zye@uwaterloo.ca" aria-label="Email Zilin">
                         <ion-icon name="mail-outline"></ion-icon>
                     </a>
-                    <a href="https://www.linkedin.com/in/zilin-ye-zye/" target="_blank">
+                    <a href="https://www.linkedin.com/in/zilin-ye-zye/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
                         <ion-icon name="logo-linkedin"></ion-icon>
                     </a>
-                    <a href="https://github.com/zye829" target="_blank">
+                    <a href="https://github.com/zye829" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
                         <ion-icon name="logo-github"></ion-icon>
-                    </a>  
+                    </a>
                 </div>
-                
             </div>
-            
+
+            <aside class="hero-card" aria-label="Portfolio highlights">
+                <div class="profile-orb">
+                    <h2>Designing with care.</h2>
+                    <p>Healthcare, software, research, and community-centered projects.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <strong>4+</strong>
+                        <span>Projects</span>
+                    </div>
+                    <div class="stat">
+                        <strong>BME</strong>
+                        <span>Focus</span>
+                    </div>
+                    <div class="stat">
+                        <strong>UW</strong>
+                        <span>Student</span>
+                    </div>
+                </div>
+            </aside>
         </section>
 
-        <section class="projects">
-            <h2>Projects</h2>
-            <hr class="line">
-
-            <!-- Containers -->
-            <div class="project-tiles">
-                <a href="MIRA.html" >
-                    <img src="img/MIRA.jpg" alt="MIRA">
-                    <h3>MIRA Medical Research Assistant</h3>
-                    <p><span>Microsoft</span></p>
-                    <p>AI model solution aimed to improve medical research process using Microsoft Azure</p>
-                </a>
+        <section class="projects" id="projects">
+            <div class="section-heading">
+                <h2>Featured Projects</h2>
+                <p>A mix of software, biomedical engineering, and accessibility-focused work.</p>
             </div>
 
-            <div class="project-tiles">
-                <a href="beamforming.html" >
-                    <img src="img/Logo.jpg" alt="Logo">
-                    <h3>Beamforming C++ Program</h3>
-                    <p><span>Individual Projects</span></p>
-                    <p>C++ program used in ultrasound beamforming</p>
+            <div class="project-grid">
+                <a class="project-card" href="MIRA.html">
+                    <img src="img/MIRA.jpg" alt="MIRA Medical Research Assistant project preview">
+                    <div class="project-card-content">
+                        <span class="tag">Microsoft</span>
+                        <h3>MIRA Medical Research Assistant</h3>
+                        <p>AI model solution aimed at improving the medical research process using Microsoft Azure.</p>
+                        <span class="card-link">View case study <ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </div>
+                </a>
+
+                <a class="project-card" href="beamforming.html">
+                    <img src="img/Logo.jpg" alt="Beamforming C++ Program project preview">
+                    <div class="project-card-content">
+                        <span class="tag">C++</span>
+                        <h3>Beamforming C++ Program</h3>
+                        <p>C++ program used for ultrasound beamforming and imaging workflows.</p>
+                        <span class="card-link">View case study <ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </div>
+                </a>
+
+                <a class="project-card" href="exercise_eq.html">
+                    <img src="img/Logo.jpg" alt="Exercise Equipment Prototyping project preview">
+                    <div class="project-card-content">
+                        <span class="tag">Accessible Design</span>
+                        <h3>Exercise Equipment Prototyping</h3>
+                        <p>Alternative arm exercise equipment prototype designed for wheelchair users.</p>
+                        <span class="card-link">View case study <ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </div>
                 </a>
             </div>
-
-            <div class="project-tiles">
-                <a href="exercise_eq.html" >
-                    <img src="img/Logo.jpg" alt="Logo">
-                    <h3>Exercise Equipment Prototyping</h3>
-                    <p><span>Individual Projects</span></p>
-                    <p>Created alternative arm exercise equipment prototype for wheelchair users</p>
-                </a>
-            </div>
-
-            <h2>Other Activities</h2>
-            <hr class="line">
-            <div class="project-tiles">
-                <a href="supportive_teens.html" >
-                    <img src="img/Supportive-teens.jpg" alt="Logo">
-                    <h3>Charity Co-Founder/Media Manager</h3>
-                    <p><span>Individual Projects</span></p>
-                    <p>Collabrated with local food banks and Canadian Red Cross to provide community support</p>
-                </a>
-
-            </div>
-
-           
-        </section>
-        <!-- footer -->
-        <section class="footer">
-            <hr class="footer-line">
-            <h1>ZY</h1>
-
-            <div class="social-icons footer-icon">
-                <a href=mailto:“zye@uwaterloo.ca” >
-                    <ion-icon name="mail-outline"></ion-icon>
-                </a>
-                <a href="https://www.linkedin.com/in/zilin-ye-zye/" target="_blank">
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
-                <a href="https://github.com/zye829"  target="_blank">
-                    <ion-icon name="logo-github"></ion-icon>
-                </a>  
-            </div>
-            <p> Designed and Developed by Zilin Ye </p>
-            <p> zilinye.com</p>
         </section>
 
+        <section class="activities" id="activities">
+            <div class="section-heading">
+                <h2>Other Activities</h2>
+                <p>Community work and initiatives beyond engineering projects.</p>
+            </div>
 
-    </body>
+            <a class="activity-card" href="supportive_teens.html">
+                <img src="img/Supportive-teens.jpg" alt="Supportive Teens project preview">
+                <div class="project-card-content">
+                    <span class="tag">Community</span>
+                    <h3>Charity Co-Founder / Media Manager</h3>
+                    <p>Collaborated with local food banks and the Canadian Red Cross to provide community support through youth-led initiatives.</p>
+                    <span class="card-link">View activity <ion-icon name="arrow-forward-outline"></ion-icon></span>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h1>ZY</h1>
+        <div class="social-icons footer-icon" aria-label="Footer social links">
+            <a href="mailto:zye@uwaterloo.ca" aria-label="Email Zilin">
+                <ion-icon name="mail-outline"></ion-icon>
+            </a>
+            <a href="https://www.linkedin.com/in/zilin-ye-zye/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+            <a href="https://github.com/zye829" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                <ion-icon name="logo-github"></ion-icon>
+            </a>
+        </div>
+        <p>Designed and developed by Zilin Ye</p>
+        <p>zilinye.com</p>
+    </footer>
+</body>
 </html>
